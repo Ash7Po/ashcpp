@@ -1,0 +1,41 @@
+//code to find max sum in a circular subarray
+#include <iostream>
+#include <algorithm>
+using namespace std;
+int main()
+{
+    int n,i,j,m;
+    cin >> n>>m;
+    int a[n][m];
+    for (i = 0; i < n; i++){
+        for(j=0;j<m;j++){
+            cin>>a[i][j];
+        }
+    }
+    int l;
+    int st_r = 0, end_r = n-1, st_c =0, end_c = m-1;
+    while(st_r<=end_r && st_c<=end_c)
+    {
+        for(l=st_c;l<=end_c;l++){
+            cout<<a[st_r][l]<<" ";
+        }
+        st_r++;
+        for(l=st_r;l<=end_r;l++){
+            cout<<a[l][end_c]<<" ";
+        }
+        end_c--;
+        if(st_r<=end_r){
+            for(l=end_c;l>=st_c;l--){
+            cout<<a[end_r][l]<<" ";
+        }
+        end_r--;
+        }
+        if(st_c<=end_c){
+            for(l=end_r;l>=st_r;l--){
+            cout<<a[l][st_c]<<" ";
+        }
+        st_c++;
+        }
+    }
+    return 0;
+}
